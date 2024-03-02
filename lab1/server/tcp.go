@@ -21,12 +21,6 @@ func handleConnection(conn net.Conn) {
 		conn.RemoteAddr().String())
 
 	for {
-		_, err := fmt.Fprint(conn, "> ")
-		if err != nil {
-			fmt.Printf("Error: %s\n", err)
-			break
-		}
-
 		message, err := input.ReadString('\n')
 		if err != nil {
 			fmt.Printf("Error: %s\n", err)
