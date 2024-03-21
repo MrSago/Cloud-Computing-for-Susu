@@ -1,0 +1,89 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  margin: 20px auto;
+  margin-top: calc(10%);
+  width: 50%;
+  height: 50%;
+  border: 1px solid #646cff;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.messages ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.messages li {
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: #3b3b3b;
+  border-radius: 5px;
+}
+
+.input-container {
+  padding: 10px;
+  background-color: #585858;
+}
+
+.input-container input[type="text"] {
+  width: 90%;
+  padding: 8px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.input-container input[type="submit"] {
+  padding: 8px 15px;
+  margin-top: 5px;
+  border: none;
+  background-color: #344cb6;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
