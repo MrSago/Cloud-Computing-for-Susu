@@ -14,7 +14,7 @@ func handleConnection(connection net.Conn) {
 
 	reader := bufio.NewReader(connection)
 
-	fmt.Fprintf(connection, "Welcome to the server!\r\n"+
+	fmt.Fprintf(connection, "Welcome to the TCP server!\r\n"+
 		"Your IP address is %s\r\n"+
 		"Type 'quit' to exit.\r\n",
 		connection.RemoteAddr().String())
@@ -22,7 +22,7 @@ func handleConnection(connection net.Conn) {
 	for {
 		inputMessage, err := reader.ReadString('\n')
 		if err != nil {
-			fmt.Printf("Error: %s\n", err)
+			fmt.Printf("Error reading from TCP: %s\n", err)
 			break
 		}
 
@@ -37,7 +37,7 @@ func handleConnection(connection net.Conn) {
 		responseMessage := fmt.Sprintf("[Server]: %s", inputMessage)
 		_, err = fmt.Fprint(connection, responseMessage)
 		if err != nil {
-			fmt.Printf("Error: %s\n", err)
+			fmt.Printf("Error sending response: %s\n", err)
 			break
 		}
 	}
@@ -46,7 +46,7 @@ func handleConnection(connection net.Conn) {
 func main() {
 	listener, err := net.Listen("tcp", "localhost:8080")
 	if err != nil {
-		fmt.Printf("Error: %s\n", err)
+		fmt.Printf("Error listening on TCP: %s\n", err)
 		return
 	}
 	defer listener.Close()
@@ -56,7 +56,7 @@ func main() {
 	for {
 		connection, err := listener.Accept()
 		if err != nil {
-			fmt.Printf("Error: %s\n", err)
+			fmt.Printf("Error accepting connection: %s\n", err)
 			break
 		}
 		go handleConnection(connection)
