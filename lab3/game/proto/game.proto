@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+option go_package = "github.com/noartem/labs/4/2/cloud/3/game/proto";
+
+package game;
+
+service Game {
+  rpc Register (RegisterRequest) returns (RegisterReply) {}
+  rpc JoinLobby (JoinLobbyRequest) returns (JoinLobbyReply) {}
+  rpc Ready (ReadyRequest) returns (ReadyReply) {}
+  rpc GetPlayerGameData (GetPlayerGameDataRequest) returns (GetPlayerGameDataReply) {}
+  rpc AnswerGame (AnswerGameRequest) returns (AnswerGameReply) {}
+}
+
+message RegisterRequest {
+  string name = 1;
+}
+
+message RegisterReply {
+  string userId = 1;
+}
+
+message JoinLobbyRequest {
+  string playerId = 1;
+  string lobbyId = 2;
+}
+
+message JoinLobbyReply {
+  string lobbyId = 1;
+}
+
+message ReadyRequest {
+  string lobbyId = 1;
+  string playerId = 2;
+}
+
+message ReadyReply {
+  string gameId = 1;
+}
+
+message GetPlayerGameDataRequest {
+  string gameId = 1;
+  string playerId = 2;
+}
+
+enum PlayerGameState {
+  NOT_READY = 0;
+  READY = 1;
+  PLAYING = 2;
+  YOUR_TURN = 3;
+  WON = 4;
+  FINISHED = 5;
+}
+
+message GetPlayerGameDataReply {
+  PlayerGameState state = 1;
+  string logs = 2;
+}
+
+message AnswerGameRequest {
+  string gameId = 1;
+  string playerId = 2;
+  string answer = 3;
+}
+
+message AnswerGameReply {
+  bool isCorrect = 1;
+}

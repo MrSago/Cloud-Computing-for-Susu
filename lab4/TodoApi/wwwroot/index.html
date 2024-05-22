@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do CRUD</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/awsm.min.css">
+</head>
+<body>
+    <header>
+        <h1>To-do CRUD</h1>
+        <p>
+            An example TODO application built using ASP.NET Core
+        </p>
+    </header>
+
+    <hr>
+
+    <main>
+        <section>
+            <h3>Add</h3>
+            <form id="add-form">
+                <label for="add-name">Name</label>
+                <input type="text" id="add-name" placeholder="To do...">
+
+                <input type="submit" value="Add">
+            </form>
+        </section>
+
+        <section id="edit-form-section" style="display: none;">
+            <h3>Edit</h3>
+            <form id="edit-form">
+                <input type="hidden" id="edit-id">
+
+                <label for="edit-isComplete">Is Complete</label>
+                <input type="checkbox" id="edit-isComplete">
+
+                <label for="edit-name">Name</label>
+                <input type="text" id="edit-name">
+
+                <input type="submit" value="Save">
+                <button type="button" id="edit-close">&#10006;</button>
+            </form>
+        </section>
+
+        <p id="counter"></p>
+
+        <table>
+            <tr>
+                <th style="text-wrap: nowrap">Is Complete?</th>
+                <th style="width: 100%">Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tbody id="todos"></tbody>
+        </table>
+    </main>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+</body>
+</html>
